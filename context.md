@@ -61,14 +61,18 @@ Validaciones:
 ## Alcance de QA
 - Pruebas manuales exploratorias de ambas calculadoras
 - Casos de prueba generados con ayuda de IA y revisados manualmente
-- Pruebas unitarias de las funciones de cálculo
-- Pruebas end-to-end con Playwright usando los data-testid
-- Ejecución automática de pruebas con GitHub Actions (opcional)
+- Pruebas end-to-end con Playwright (carpeta tests/), 16 pruebas: cálculos correctos, validaciones y casos límite. Se ejecutan con `npx playwright test`
+- Pruebas BDD con Cucumber (carpeta features/), escritas en español con Gherkin y ejecutadas con Playwright como motor. Se ejecutan con `npx cucumber-js`
+- Por defecto, Cucumber prueba contra el sitio publicado; con la variable BASE_URL se puede apuntar a localhost
 
-## Convenciones
-- Idioma de la interfaz: español (Chile), montos en pesos con formato es-CL
-- Todos los elementos interactivos tienen data-testid para facilitar la automatización
-- Este archivo se actualiza cada vez que cambia el proyecto
+## Estructura de pruebas
+- tests/hipotecario.spec.ts y tests/rentabilidad.spec.ts: pruebas Playwright
+- features/*.feature: escenarios en lenguaje natural
+- features/steps/steps.js: código asociado a cada frase
+- features/support/hooks.js: apertura y cierre del navegador
+- cucumber.js y playwright.config.ts: configuración
 
 ## Bitácora de cambios
 - 2026-10-21: creación del proyecto, repositorio, calculadoras y despliegue en Vercel
+- 2026-10-22: pruebas E2E con Playwright, 16 pruebas pasando
+- 2026-10-22: pruebas BDD con Cucumber en español, todos los escenarios pasando
